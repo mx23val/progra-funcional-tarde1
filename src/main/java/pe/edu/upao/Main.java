@@ -1,19 +1,35 @@
 package pe.edu.upao;
 
+import pe.edu.upao.carro.services.CarServiceRest;
+import pe.edu.upao.carro.services.ICarService;
+
+import java.util.HashMap;
+import java.util.Map;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Map<String, Object> bolsaBeansSpring = new HashMap<>();
+        bolsaBeansSpring.put("CarService", new CarServiceRest());
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        System.out.println("--------Modulo1000--------");
+        ICarService carService= (ICarService) bolsaBeansSpring.get("CarService");
+        haceCosasComplejas(carService);
+
+        System.out.println("--------Modulo1001--------");
+        ICarService carService2= (ICarService) bolsaBeansSpring.get("CarService");
+        haceCosasComplejas(carService2);
+
+        System.out.println("--------Modulo1002--------");
+        ICarService carService3= new CarServiceRest();
+        haceCosasComplejas(carService3);
     }
+    public static void haceCosasComplejas(ICarService carService) {
+
+        carService.printListCars();
+    }
+
+
 }
